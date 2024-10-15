@@ -11,7 +11,7 @@ namespace BankAccountNS
         public const string DebitAmountLessThanZeroMessage = "Debit amount is less than zero";
         private readonly string m_customerName;
         private double m_balance;
-
+        private bool m_frozen = false;
         private BankAccount() { }
 
         public BankAccount(string customerName, double balance)
@@ -55,6 +55,15 @@ namespace BankAccountNS
             m_balance += amount;
         }
 
+        public void FreezeAccount()
+        {
+            m_frozen = true;
+        }
+
+        public void UnfreezeAccount()
+        {
+            m_frozen = false;
+        }
         public static void Main()
         {
             BankAccount ba = new BankAccount("Mr. Bryan Walton", 11.99);
